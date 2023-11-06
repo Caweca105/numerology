@@ -1,11 +1,12 @@
 <template>
+  <div>
+    <AppHeader />
+  </div>
   <div id="app">
-    <div class="text-h1 text-white" align="center">Numerology Calculator</div>
     <div align="center" class="q-pa-md row items-start q-gutter-md">
-      <MotivationCalculator ref="motivationRef" />
-      <ExpressionCalculator ref="expressionRef" />
-      <InteriorDesiresCalculator ref="interiorDesiresRef" />
-      <HouseNumber ref="houseNumberRef" />
+      <MotivationCalculator class="col" ref="motivationRef" />
+      <ExpressionCalculator class="col" ref="expressionRef" />
+      <InteriorDesiresCalculator class="col" ref="interiorDesiresRef" />
 
       <!-- <q-btn
       class="text-white"
@@ -15,6 +16,13 @@
       @click="calculateAll"
     /> -->
     </div>
+
+    <div class="q-pa-md row items-start q-gutter-md">
+      <HouseNumber class="col" ref="houseNumberRef" />
+    </div>
+  </div>
+  <div>
+    <AppFooter />
   </div>
 </template>
 

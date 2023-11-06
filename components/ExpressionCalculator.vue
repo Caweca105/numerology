@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md row items-start q-gutter-sm">
+  <div class="q-pa-md items-start q-gutter-sm">
     <q-card class="my-card text-white fixed-size-card" style="background: teal">
       <div align="center" class="text-subtitle2 q-pa-md">
         This is your Expression number.
