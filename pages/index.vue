@@ -1,15 +1,9 @@
 <template>
-  <div id="app">
-    <NumerologyCalculator />
+  <div>
+    <NuxtPage />
   </div>
 </template>
 
-<script setup>
-// import NumerologyCalculator from "~/components/NumerologyCalculator.vue";
-</script>
+<script setup></script>
 
-<style>
-#app {
-  background-color: rgb(49, 49, 49);
-}
-</style>
+<style></style>

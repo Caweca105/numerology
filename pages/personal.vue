@@ -2,22 +2,20 @@
   <div class="q-pa-md items-start q-gutter-sm">
     <q-card class="my-card text-white" style="background: teal">
       <div align="center" class="text-subtitle2 q-pa-md">
-        This is your Interior Desires number.
+        <strong>This is your Personal number calculator.</strong>
       </div>
       <div align="center" class="text-subtitle2 q-pa-md">
-        They determine what we desire from our physical plane.<br />This number
-        describes our secret desires hidden inside our unconscious.<br />
-        It is the vibration most close to our ego.
+        It is divided into three parts..........
       </div>
       <q-card-section align="center">
         <q-input
           style="max-width: 300px"
           rounded
           outlined
-          color="blue-grey-11"
           :rules="rules"
+          color="blue-grey-11"
           label="Enter your name"
-          @keyup.enter="calculateInteriorDesiresCalculator"
+          @keyup.enter="calculateExpressionCalculator"
         />
       </q-card-section>
 
@@ -29,26 +27,26 @@
           :ripple="{ center: true }"
           color="secondary"
           label="Calculate"
-          @click="calculateInteriorDesiresCalculator"
+          @click="calculateExpressionCalculator"
         />
       </q-card-section>
 
-      <q-separator v-if="totalDesiresValue" inset />
+      <q-separator v-if="totalExpressionValue" inset />
 
       <div
         align="center"
         class="text-subtitle2 q-pa-md"
-        v-if="totalDesiresValue"
-        :key="totalDesiresValue"
+        v-if="totalExpressionValue"
+        :key="totalExpressionValue"
       >
-        Your numerology number is: {{ totalDesiresValue }}
+        Your numerology number is: {{ totalExpressionValue }}
       </div>
       <div
         align="center"
         class="text-subtitle2 q-pa-md"
-        v-if="numberDescriptionDesires"
+        v-if="numberDescriptionExpression"
       >
-        {{ numberDescriptionDesires }}
+        {{ numberDescriptionExpression }}
       </div>
     </q-card>
   </div>
@@ -58,9 +56,9 @@
 import { ref, computed } from "vue";
 
 const name = ref("");
-const totalDesiresValue = ref(0);
+const totalExpressionValue = ref(0);
 
-const numberDescriptionDesiress = {
+const numberDescriptionExpressions = {
   1: "This is the description for number 1.",
   2: "This is the description for number 2.",
   3: "This is the description for number 3.",
@@ -74,8 +72,8 @@ const numberDescriptionDesiress = {
   22: "This is the description for master number 22.",
 };
 
-const numberDescriptionDesires = computed(() => {
-  return numberDescriptionDesiress[totalDesiresValue.value] || "";
+const numberDescriptionExpression = computed(() => {
+  return numberDescriptionExpressions[totalExpressionValue.value] || "";
 });
 
 const onlyLettersRule = (val) =>
@@ -84,6 +82,7 @@ const onlyLettersRule = (val) =>
 const rules = [onlyLettersRule];
 
 const numerologyMap = {
+  a: 1,
   j: 1,
   s: 1,
   b: 2,
@@ -91,12 +90,15 @@ const numerologyMap = {
   t: 2,
   c: 3,
   l: 3,
+  u: 3,
   d: 4,
   m: 4,
   v: 4,
+  e: 5,
   n: 5,
   w: 5,
   f: 6,
+  o: 6,
   x: 6,
   g: 7,
   p: 7,
@@ -104,22 +106,21 @@ const numerologyMap = {
   h: 8,
   q: 8,
   z: 8,
+  i: 9,
   r: 9,
 };
 
-const calculateInteriorDesiresCalculator = () => {
+const calculateExpressionCalculator = () => {
   let sum = 0;
   const cleanedName = name.value.replace(/\s+/g, "").toLowerCase();
 
   for (const char of cleanedName) {
-    if (!"aeiou".includes(char)) {
-      sum += numerologyMap[char] || 0;
-    }
+    sum += numerologyMap[char] || 0;
   }
 
   // Check for master numbers 11 and 22
   if (sum === 11 || sum === 22) {
-    totalDesiresValue.value = sum;
+    totalExpressionValue.value = sum;
     return;
   }
 
@@ -138,15 +139,15 @@ const calculateInteriorDesiresCalculator = () => {
     }
   }
 
-  totalDesiresValue.value = sum;
+  totalExpressionValue.value = sum;
 };
 
 // return {
 //   name,
-//   totalDesiresValue,
-//   numberDescriptionDesires,
-//   calculateInteriorDesiresCalculator,
-//   numberDescriptionDesiress,
+//   totalExpressionValue,
+//   numberDescriptionExpression,
+//   calculateExpressionCalculator,
+//   numberDescriptionExpressions,
 // };
 </script>
 

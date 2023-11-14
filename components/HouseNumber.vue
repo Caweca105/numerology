@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md items-start q-gutter-sm">
-    <q-card class="my-card text-white fixed-size-card" style="background: teal">
+    <q-card class="my-card text-white" style="background: teal">
       <div align="center" class="text-subtitle2 q-pa-md">
         This is your House number.
       </div>
@@ -74,6 +74,11 @@ const numberDescription = computed(() => {
   return numberDescriptions[totalValue.value] || "";
 });
 
+const onlyNumbersRule = (val) => {
+  /^[0-9]*$/.test(val) || "Only numbers are allowed";
+};
+const rules = [onlyNumbersRule];
+
 const calculateHouseNumberCalculator = () => {
   let number = parseInt(name.value, 10);
   let sum = number;
@@ -93,9 +98,4 @@ const calculateHouseNumberCalculator = () => {
 };
 </script>
 
-<style>
-.fixed-size-card {
-  width: 400px;
-  height: 300px;
-}
-</style>
+<style></style>

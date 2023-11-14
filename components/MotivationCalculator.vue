@@ -16,7 +16,7 @@
           rounded
           outlined
           color="blue-grey-11"
-          v-model="name"
+          :rules="rules"
           label="Enter your name"
           @keyup.enter="calculateMotivationCalculator"
         />
@@ -78,6 +78,11 @@ const numberDescriptions = {
 const numberDescription = computed(() => {
   return numberDescriptions[totalValue.value] || "";
 });
+
+const onlyLettersRule = (val) =>
+  /^[A-Za-z\u00C0-\u00FF\s]+$/.test(val) || "Only letters are allowed";
+
+const rules = [onlyLettersRule];
 
 const numerologyMap = {
   a: 1,

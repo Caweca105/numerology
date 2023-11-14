@@ -1,5 +1,9 @@
 <template>
-  <div id="header" class="text-h1 text-white">Numerology Calculator</div>
+  <div id="header" class="text-h1">Numerology Calculator</div>
+  <div>
+    <NuxtLink to="/personal">Personal Numbers</NuxtLink>
+    <!-- <NuxtLink to="/house">House Numbers</NuxtLink> -->
+  </div>
 </template>
 
 <script setup></script>
@@ -8,5 +12,6 @@
 #header {
   background-color: rgb(49, 49, 49);
   padding: 10px;
+  color: #b8c1ec;
 }
 </style>

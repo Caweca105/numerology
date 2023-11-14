@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md items-start q-gutter-sm">
-    <q-card class="my-card text-white fixed-size-card" style="background: teal">
+    <q-card class="my-card text-white" style="background: teal">
       <div align="center" class="text-subtitle2 q-pa-md">
-        This is your Expression number.
+        <strong>This is your Expression number.</strong>
       </div>
       <div align="center" class="text-subtitle2 q-pa-md">
         It describes your natural talents and abilities and <br />how you can
@@ -13,8 +13,8 @@
           style="max-width: 300px"
           rounded
           outlined
+          :rules="rules"
           color="blue-grey-11"
-          v-model="name"
           label="Enter your name"
           @keyup.enter="calculateExpressionCalculator"
         />
@@ -32,22 +32,22 @@
         />
       </q-card-section>
 
-      <q-separator v-if="totalValue" inset />
+      <q-separator v-if="totalExpressionValue" inset />
 
       <div
         align="center"
         class="text-subtitle2 q-pa-md"
-        v-if="totalValue"
-        :key="totalValue"
+        v-if="totalExpressionValue"
+        :key="totalExpressionValue"
       >
-        Your numerology number is: {{ totalValue }}
+        Your numerology number is: {{ totalExpressionValue }}
       </div>
       <div
         align="center"
         class="text-subtitle2 q-pa-md"
-        v-if="numberDescription"
+        v-if="numberDescriptionExpression"
       >
-        {{ numberDescription }}
+        {{ numberDescriptionExpression }}
       </div>
     </q-card>
   </div>
@@ -57,9 +57,9 @@
 import { ref, computed } from "vue";
 
 const name = ref("");
-const totalValue = ref(0);
+const totalExpressionValue = ref(0);
 
-const numberDescriptions = {
+const numberDescriptionExpressions = {
   1: "This is the description for number 1.",
   2: "This is the description for number 2.",
   3: "This is the description for number 3.",
@@ -73,9 +73,14 @@ const numberDescriptions = {
   22: "This is the description for master number 22.",
 };
 
-const numberDescription = computed(() => {
-  return numberDescriptions[totalValue.value] || "";
+const numberDescriptionExpression = computed(() => {
+  return numberDescriptionExpressions[totalExpressionValue.value] || "";
 });
+
+const onlyLettersRule = (val) =>
+  /^[A-Za-z\u00C0-\u00FF\s]+$/.test(val) || "Only letters are allowed";
+
+const rules = [onlyLettersRule];
 
 const numerologyMap = {
   a: 1,
@@ -116,7 +121,7 @@ const calculateExpressionCalculator = () => {
 
   // Check for master numbers 11 and 22
   if (sum === 11 || sum === 22) {
-    totalValue.value = sum;
+    totalExpressionValue.value = sum;
     return;
   }
 
@@ -135,21 +140,16 @@ const calculateExpressionCalculator = () => {
     }
   }
 
-  totalValue.value = sum;
+  totalExpressionValue.value = sum;
 };
 
 // return {
 //   name,
-//   totalValue,
-//   numberDescription,
+//   totalExpressionValue,
+//   numberDescriptionExpression,
 //   calculateExpressionCalculator,
-//   numberDescriptions,
+//   numberDescriptionExpressions,
 // };
 </script>
 
-<style>
-.fixed-size-card {
-  width: 400px;
-  height: 300px;
-}
-</style>
+<style></style>

@@ -1,12 +1,13 @@
 <template>
-  <div id="header" class="text-h1 text-white">My footer example</div>
+  <div id="footer" class="text-h5">My footer example</div>
 </template>
 
 <script setup></script>
 
 <style scoped>
-#header {
+#footer {
   background-color: rgb(49, 49, 49);
   padding: 10px;
+  color: #b8c1ec;
 }
 </style>
