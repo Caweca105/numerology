@@ -1,5 +1,5 @@
 <template>
-  <div>This is the house number</div>
+  <div><HouseNumber /></div>
 </template>
 
 <script setup></script>

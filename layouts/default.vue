@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-const title = useState("title", () => "Nuxt 3 Blog");
+const title = useState("title", () => "My Nuxt 3 Numerology App");
 </script>
 
 <style>
